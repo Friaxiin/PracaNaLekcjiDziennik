@@ -11,6 +11,7 @@ namespace PracaNaLekcjiDziennik
         public int GradeId { get; set; }
         public int UserId { get; set; }
         public int SubjectId { get; set; }
+        public string SubjectName { get; set; }
         public string Score {  get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }

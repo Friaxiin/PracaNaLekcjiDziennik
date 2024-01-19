@@ -24,7 +24,7 @@ namespace PracaNaLekcjiDziennik
         {
             return _database.QueryAsync<User>("SELECT * FROM User WHERE Login = ? AND Password = ?", login, password);
         }
-        public Task<int> AddUser(User user) 
+        public Task<int> InsertUser(User user) 
         {
             return _database.InsertAsync(user);
         }
@@ -48,7 +48,7 @@ namespace PracaNaLekcjiDziennik
         {
             return _database.InsertAsync(grade);
         }
-        public Task<List<Grade>> GetScories(int userId, int subjectId, string period)
+        public Task<List<Grade>> GetGrades(int userId, int subjectId, string period)
         {
             return _database.QueryAsync<Grade>("SELECT * FROM Grade WHERE UserId=? AND SubjectId=? AND Period=?", userId, subjectId, period);
         }

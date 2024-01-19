@@ -15,10 +15,35 @@ namespace PracaNaLekcjiDziennik
         public LoginPage()
         {
             InitializeComponent();
-            User user = new User();
-            user.Login = "123";
-            user.Password = "123";
-            App.DataBase.AddUser(user);
+            //Dodaj();
+        }
+        public async void Dodaj()
+        {
+            User u = new User()
+            {
+                Name = "Jan",
+                Surname = "Kowalski",
+                Login = "1231231",
+                Password = "admin123",
+                IsTeacher = true
+            };
+            await App.DataBase.InsertUser(u);
+            Subject subject = new Subject()
+            {
+                SubjectName = "Biologia"
+            };
+            await App.DataBase.InsertSubject(subject);
+            Grade grade = new Grade()
+            {
+                UserId = 1,
+                SubjectId = 1,
+                SubjectName = "Biologia",
+                Score = "5+",
+                Date = DateTime.Now,
+                Description = "Sprawdzian",
+                Period = "Okres 1"
+            };
+            await App.DataBase.InsertGrade(grade);
         }
 
         private async void Login_Click(object sender, EventArgs e)
@@ -31,7 +56,7 @@ namespace PracaNaLekcjiDziennik
             }
 
             var user = users.ElementAt(0);
-            Navigation.PushAsync(new MainPage(user));
+            await Navigation.PushAsync(new MainPage(user));
         }
     }
 }
