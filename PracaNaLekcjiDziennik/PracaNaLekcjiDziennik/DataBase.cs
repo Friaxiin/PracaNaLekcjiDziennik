@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace PracaNaLekcjiDziennik
 {
@@ -13,17 +15,42 @@ namespace PracaNaLekcjiDziennik
         public DataBase(string dbPath)
         {
             _database = new SQLiteAsyncConnection(dbPath);
+            _database.CreateTableAsync<User>().Wait();
+            _database.CreateTableAsync<Grade>().Wait();
+            _database.CreateTableAsync<Subject>().Wait();
         }
 
-        public Task<User> FilterUsers(string login, string password)
+        public Task<List<User>> FilterUsers(string login, string password)
         {
-            var data = _database.Table<User>().Where(u => u.Login == login && u.Password == password).FirstOrDefaultAsync();
-            return data;
+            return _database.QueryAsync<User>("SELECT * FROM User WHERE Login = ? AND Password = ?", login, password);
         }
-
         public Task<int> AddUser(User user) 
         {
             return _database.InsertAsync(user);
+        }
+        public Task<List<User>> GetUsers()
+        {
+            return _database.QueryAsync<User>("SELECT * FROM User");
+        }
+        public Task<List<Subject>> GetSubjects()
+        {
+            return _database.QueryAsync<Subject>("SELECT * FROM Subject");
+        }
+        public Task<List<Grade>> GetGrades()
+        {
+            return _database.QueryAsync<Grade>("SELECT * FROM Grade");
+        }
+        public Task<int> InsertSubject(Subject subject)
+        {
+            return _database.InsertAsync(subject);
+        }
+        public Task<int> InsertGrade(Grade grade)
+        {
+            return _database.InsertAsync(grade);
+        }
+        public Task<List<Grade>> GetScories(int userId, int subjectId, string period)
+        {
+            return _database.QueryAsync<Grade>("SELECT * FROM Grade WHERE UserId=? AND SubjectId=? AND Period=?", userId, subjectId, period);
         }
     }
 }
