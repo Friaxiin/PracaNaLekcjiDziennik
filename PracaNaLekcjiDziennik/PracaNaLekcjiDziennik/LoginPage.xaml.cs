@@ -19,28 +19,28 @@ namespace PracaNaLekcjiDziennik
         }
         public async void Dodaj()
         {
-            User u = new User()
+            User user = new User()
             {
                 Name = "Jan",
                 Surname = "Kowalski",
-                Login = "1231231",
-                Password = "admin123",
+                Login = "000000n",
+                Password = "admin",
                 IsTeacher = true
             };
-            await App.DataBase.InsertUser(u);
+            //await App.DataBase.InsertUser(user);
             Subject subject = new Subject()
             {
-                SubjectName = "Biologia"
+                SubjectName = "Chemia"
             };
-            await App.DataBase.InsertSubject(subject);
+            //await App.DataBase.InsertSubject(subject);
             Grade grade = new Grade()
             {
                 UserId = 1,
                 SubjectId = 1,
-                SubjectName = "Biologia",
-                Score = "5+",
+                SubjectName = "Chemia",
+                Score = "5",
                 Date = DateTime.Now,
-                Description = "Sprawdzian",
+                Description = "Kartkówka",
                 Period = "Okres 1"
             };
             await App.DataBase.InsertGrade(grade);
