@@ -27,12 +27,12 @@ namespace PracaNaLekcjiDziennik
                 Password = "admin",
                 IsTeacher = true
             };
-            //await App.DataBase.InsertUser(user);
+            await App.DataBase.InsertUser(user);
             Subject subject = new Subject()
             {
                 SubjectName = "Chemia"
             };
-            //await App.DataBase.InsertSubject(subject);
+            await App.DataBase.InsertSubject(subject);
             Grade grade = new Grade()
             {
                 UserId = 1,

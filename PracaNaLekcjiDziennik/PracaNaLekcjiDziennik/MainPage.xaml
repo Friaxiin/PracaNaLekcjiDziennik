@@ -39,7 +39,7 @@
                                                     <ColumnDefinition Width="20"/>
                                                     <ColumnDefinition/>
                                                 </Grid.ColumnDefinitions>
-                                                <Label Text="{Binding Value}" Grid.RowSpan="2" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40"/>
+                                                <Label Text="{Binding Score}" Grid.RowSpan="2" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" FontSize="40"/>
                                                 <StackLayout Orientation="Horizontal" Grid.Column="1">
                                                     <Label Text="{Binding SubjectName}" TextColor="White"/>
                                                     <Label Text="{Binding Date, StringFormat='{{}{0:dd.MM}'}" TextColor="White"/>
@@ -110,16 +110,31 @@
                 <StackLayout Margin="10,20,10,0">
                     <Label Text="Wyberz kategorię" TextColor="white"/>
                     <Picker x:Name="SubjectNamePicker">
-                        <Picker.Items>
-                            <x:String></x:String>
-                        </Picker.Items>
+                        
                     </Picker>
                 </StackLayout>
                 <StackLayout Margin="10,20,10,0">
                     <Label Text="Wyberz ocenę" TextColor="white"/>
                     <Picker x:Name="ValuePicker">
                         <Picker.Items>
-                            <x:String></x:String>
+                            <x:String>6</x:String>
+                            <x:String>6-</x:String>
+                            <x:String>5+</x:String>
+                            <x:String>5</x:String>
+                            <x:String>5-</x:String>
+                            <x:String>4+</x:String>
+                            <x:String>4</x:String>
+                            <x:String>4-</x:String>
+                            <x:String>3+</x:String>
+                            <x:String>3</x:String>
+                            <x:String>3-</x:String>
+                            <x:String>2+</x:String>
+                            <x:String>2</x:String>
+                            <x:String>2-</x:String>
+                            <x:String>1+</x:String>
+                            <x:String>1</x:String>
+                            <x:String>-</x:String>
+                            <x:String>+</x:String>
                         </Picker.Items>
                     </Picker>
                 </StackLayout>

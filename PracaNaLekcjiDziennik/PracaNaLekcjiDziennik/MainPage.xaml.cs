@@ -22,6 +22,7 @@ namespace PracaNaLekcjiDziennik
         public async void UploadData()
         {
             UserScores.ItemsSource = await App.DataBase.GetGrades();
+            List<Subject> subjectsList = new List<Subject>();
 
             List<List<string>> period1Grades = new List<List<string>>();
             List<List<string>> period2Grades = new List<List<string>>();
@@ -57,10 +58,18 @@ namespace PracaNaLekcjiDziennik
                 row.Add(subject.SubjectName);
 
                 period2Grades.Add(row);
+
+                subjectsList.Add(subject);
             }
 
             UserGradesPeriod1.ItemsSource = period1Grades;
             UserGradesPeriod2.ItemsSource = period2Grades;
+
+            SubjectNamePicker.ItemsSource = subjectsList;
+        }
+        public async void AddGrade()
+        {
+
         }
     }
 }
