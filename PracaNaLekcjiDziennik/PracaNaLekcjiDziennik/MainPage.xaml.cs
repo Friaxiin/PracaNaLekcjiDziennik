@@ -22,7 +22,6 @@ namespace PracaNaLekcjiDziennik
         public async void UploadData()
         {
             UserScores.ItemsSource = await App.DataBase.GetGrades();
-            List<Subject> subjectsList = new List<Subject>();
 
             List<List<string>> period1Grades = new List<List<string>>();
             List<List<string>> period2Grades = new List<List<string>>();
@@ -59,17 +58,50 @@ namespace PracaNaLekcjiDziennik
 
                 period2Grades.Add(row);
 
-                subjectsList.Add(subject);
             }
 
             UserGradesPeriod1.ItemsSource = period1Grades;
             UserGradesPeriod2.ItemsSource = period2Grades;
 
-            SubjectNamePicker.ItemsSource = subjectsList;
         }
-        public async void AddGrade()
+        public async void AddGrade(object sender, EventArgs e)
         {
+            string subjectName = SubjectNamePicker.SelectedItem.ToString();
+            int subjectId = 0;
+            switch(subjectName)
+            {
+                case "Chemia":
+                    subjectId = 1;
+                    break;
+                case "Biologia":
+                    subjectId = 2;
+                    break;
+                case "Geografia":
+                    subjectId = 3;
+                    break;
+                case "WF":
+                    subjectId = 4;
+                    break;
+                case "Matematyka":
+                    subjectId = 4;
+                    break;
 
+            }
+            Grade grade = new Grade()
+            {
+                UserId = user.UserId,
+                SubjectId = subjectId,
+                SubjectName = SubjectNamePicker.SelectedItem.ToString(),
+                Score = ValuePicker.SelectedItem.ToString(),
+                Date = DateTime.Now,
+                Description = DescriptionEntry.Text,
+                Period = PeriodPicker.SelectedItem.ToString(),
+            };
+
+
+            await App.DataBase.InsertGrade(grade);
+
+            UploadData();
         }
     }
 }
