@@ -11,6 +11,8 @@
                 <Entry x:Name="passwordEntry" TextColor="LightGray" WidthRequest="200"/>
 
                 <Button Text="Zaloguj" Clicked="Login_Click" BackgroundColor="CadetBlue"/>
+
+                <Button Text="Pierwsze uruchomienie" Clicked="Dodaj"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

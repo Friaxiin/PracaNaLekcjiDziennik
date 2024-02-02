@@ -83,7 +83,7 @@ namespace PracaNaLekcjiDziennik
                     subjectId = 4;
                     break;
                 case "Matematyka":
-                    subjectId = 4;
+                    subjectId = 5;
                     break;
 
             }
@@ -102,6 +102,11 @@ namespace PracaNaLekcjiDziennik
             await App.DataBase.InsertGrade(grade);
 
             UploadData();
+
+            SubjectNamePicker.SelectedIndex = -1;
+            ValuePicker.SelectedIndex = -1;
+            DescriptionEntry.Text = String.Empty;
+            PeriodPicker.SelectedIndex = -1;
         }
     }
 }

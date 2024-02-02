@@ -15,10 +15,10 @@ namespace PracaNaLekcjiDziennik
         public LoginPage()
         {
             InitializeComponent();
-            //Dodaj();
         }
-        public async void Dodaj()
+        public async void Dodaj(object sender, EventArgs e)
         {
+            
             User user = new User()
             {
                 Name = "Jan",
@@ -28,30 +28,36 @@ namespace PracaNaLekcjiDziennik
                 IsTeacher = true
             };
             await App.DataBase.InsertUser(user);
-            Subject subject = new Subject();
-
+            Subject subject = new Subject()
+            {
+                SubjectName = "Chemia"
+            };
             await App.DataBase.InsertSubject(subject);
-            /*
+
             Subject subject2 = new Subject()
             {
                 SubjectName = "Biologia"
             };
             await App.DataBase.InsertSubject(subject2);
+
             Subject subject3 = new Subject()
             {
                 SubjectName = "Geografia"
             };
             await App.DataBase.InsertSubject(subject3);
+
             Subject subject4 = new Subject()
             {
                 SubjectName = "Wychowanie Fizyczne"
             };
             await App.DataBase.InsertSubject(subject4);
+
             Subject subject5 = new Subject()
             {
                 SubjectName = "Matematyka"
             };
-            await App.DataBase.InsertSubject(subject5);*/
+            await App.DataBase.InsertSubject(subject5);
+            
             /*Grade grade = new Grade()
             {
                 UserId = 1,
